@@ -1,0 +1,29 @@
+<div class="container" >
+  <div class="card text-white bg-primary mb-3" style="max-width: 50%;">
+    <div class="card-header h1">Restaurant Details</div>
+    <div class="card-body">
+      <h5 class="card-title">Name: <%= @restaurant.name %> </h5>
+      <p class="card-text">
+      Phone: <%= @restaurant.phone_number %> - <br>
+      Category: <%= @restaurant.category %> - <br>
+      Address: <%= @restaurant.address %>.
+      </p>
+      <br>
+      <br>
+      <div>
+        <p class="text-center text-white bg-dark"><%= link_to 'Edit', edit_restaurant_path(@restaurant) %></p>
+        <p class="text-center text-white bg-dark"><%= link_to 'Delete', restaurant_path(@restaurant), method: :delete, data: { confirm: "Are you sure?" } %></p>
+        <p class="text-center text-white bg-dark"><%= link_to 'Leave a review', new_restaurant_review_path(@restaurant) %></p>
+        <p class="text-center text-white bg-dark"><%= link_to 'Back Restaurants List', restaurants_path %></p>
+      </div>
+      <div>
+        <ul class="list-group">
+          <% @restaurant.reviews.each do |review| %>
+            <li class="list-group-item list-group-item-info"><%= review.rating%> - <%= review.content %></li>
+            <%= link_to 'delete', review_path(review), method: :delete, data: { confirm: "Are you sure?" } %>
+            <hr>
+          <% end %>
+        </ul>
+      </div>
+    </div>
+</div>

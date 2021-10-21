@@ -1,0 +1,22 @@
+<div class="container rounded p-3 mx-auto mt-5 justify-content-center">
+  <div class="row justify-content-center">
+    <div class="col-12">
+        <div class="card bg-gradient-light mb-3" style="max-width: 38rem;">
+          <div class="card-header h4">Restaurants List</div>
+          <div class="card-body">
+            <ul>
+              <% @restaurants.each do |restaurant| %>
+                <li><%= link_to restaurant.name, restaurant_path(restaurant) %> - Phone: <%= restaurant.phone_number %> </li>
+              <% end %>
+            </ul>
+            <br>
+            <br>
+            <br>
+          </div>
+        </div>
+        <div>
+          <%= link_to 'Create a new Restaurant', new_restaurant_path %>
+        </div>
+    </div>
+  </div>
+</div>
